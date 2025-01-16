@@ -34,13 +34,13 @@ This script converts a CSV file back into an ARB file. The CSV must contain exac
 To convert an ARB file to a CSV file, use the following command:
 
 ```bash
-python arb2csv.py <file.arb>
+python3 arb2csv.py <file.arb>
 ```
 
 For example:
 
 ```bash
-python arb2csv.py sine.arb
+python3 arb2csv.py sine.arb
 ```
 
 This will generate a file named `sine.csv` in the same directory.
@@ -50,13 +50,13 @@ This will generate a file named `sine.csv` in the same directory.
 To convert a CSV file back to an ARB file, use the following command:
 
 ```bash
-python csv2arb.py <file.csv>
+python3 csv2arb.py <file.csv>
 ```
 
 For example:
 
 ```bash
-python csv2arb.py sine.csv
+python3 csv2arb.py sine.csv
 ```
 
 This will generate a file named `sine.arb` in the same directory.

@@ -25,7 +25,7 @@ This script converts a CSV file back into an ARB file. The CSV must contain exac
 
 ## Prerequisites
 
-- Python 3.6 or later.
+- Python 3 or later.
 
 ## Usage
 

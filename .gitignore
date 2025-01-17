@@ -135,5 +135,6 @@ dmypy.json
 .vscode/
 
 # Other files
-*.csv
 *.arb
+*.csv
+*.png

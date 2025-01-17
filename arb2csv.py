@@ -7,9 +7,9 @@ import os
 
 
 def main():
-    # Check if the filename was provided as a command-line argument.
-    if len(sys.argv) != 2:
-        print("Usage: python arb2csv.py <file.arb>")
+    # Check if at least one argument (input file) is provided.
+    if len(sys.argv) < 2:
+        print("Usage: python arb2csv.py <file.arb> [output.csv]")
         sys.exit(1)
 
     # Get the input file name from the arguments.
@@ -20,8 +20,12 @@ def main():
         print(f"Error: File '{input_file}' not found.")
         sys.exit(1)
 
-    # Generate the output file name (replace extension with .csv).
-    output_file = os.path.splitext(input_file)[0] + ".csv"
+    # Check if an output file name was provided.
+    if len(sys.argv) > 2:
+        output_file = sys.argv[2]
+    else:
+        # Generate the output file name (replace extension with .csv).
+        output_file = os.path.splitext(input_file)[0] + ".csv"
 
     # Open the binary file for reading.
     with open(input_file, "rb") as binary_file:

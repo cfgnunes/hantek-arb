@@ -37,21 +37,26 @@ This script converts a CSV file into a PNG image, visualizing the waveform repre
 
 The output PNG file will have the same base name as the input CSV file.
 
-## Examples Directory
+## Getting Started
 
-The `examples` directory contains sample files for testing and reference, including:
+### Prerequisites
 
-- **ARB files**: Predefined waveform files.
-- **CSV files**: Corresponding CSV representations of the waveforms.
-- **PNG files**: Visualizations of the waveforms in PNG format.
+#### Using Conda (Recommended)
 
-## Prerequisites
+```sh
+conda env create
+conda activate hantek-arb-toolkit
+```
 
-- Python 3 or later.
+#### Using Pip
 
-## Usage
+```sh
+pip install -r requirements.txt
+```
 
-### Converting ARB to CSV
+### Usage
+
+#### Converting ARB to CSV
 
 To convert an ARB file to a CSV file, use the following command:
 
@@ -67,7 +72,7 @@ python3 arb2csv.py sine.arb
 
 This will generate a file named `sine.csv` in the same directory.
 
-### Converting CSV to ARB
+#### Converting CSV to ARB
 
 To convert a CSV file back to an ARB file, use the following command:
 
@@ -83,7 +88,7 @@ python3 csv2arb.py sine.csv
 
 This will generate a file named `sine.arb` in the same directory.
 
-### Converting CSV to PNG
+#### Converting CSV to PNG
 
 To convert a CSV file to a PNG image, use the following command:
 
@@ -98,6 +103,14 @@ python3 csv2png.py sine.csv
 ```
 
 This will generate a file named `sine.png` in the same directory, visualizing the waveform.
+
+## Examples Directory
+
+The `examples` directory contains sample files for testing and reference, including:
+
+- **ARB files**: Predefined waveform files.
+- **CSV files**: Corresponding CSV representations of the waveforms.
+- **PNG files**: Visualizations of the waveforms in PNG format.
 
 ## Notes
 

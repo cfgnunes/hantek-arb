@@ -1,0 +1,10 @@
+name: hantek-arb-toolkit
+
+channels:
+  - defaults
+
+dependencies:
+  - python=>3.0
+  - pip
+  - pip:
+    - -r requirements.txt

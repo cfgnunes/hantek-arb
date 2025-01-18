@@ -5,6 +5,8 @@ import csv
 import sys
 import os
 
+NUM_VALUES = 4096
+
 
 def main():
     # Check if at least one argument (input file) is provided.
@@ -24,19 +26,26 @@ def main():
     if len(sys.argv) > 2:
         output_file = sys.argv[2]
     else:
-        # Generate the output file name (replace extension with .csv).
         output_file = os.path.splitext(input_file)[0] + ".csv"
 
+    # Read values from CSV.
+    values = read_arb(input_file)
+
+    # Write values to ARB.
+    write_csv(output_file, values)
+
+
+def read_arb(filename):
     # Open the binary file for reading.
-    with open(input_file, "rb") as binary_file:
+    with open(filename, "rb") as binary_file:
         # Read and verify the 8-byte header.
         header = binary_file.read(8)
         if header[:3] != b"arb":
             print("Error: This is not a ARB file.")
             sys.exit(1)
 
-        # Read the remaining data (4096 values, each 2 bytes).
-        binary_data = binary_file.read(4096 * 2)
+        # Read the remaining data (NUM_VALUES values, each 2 bytes).
+        binary_data = binary_file.read(NUM_VALUES * 2)
 
     # Convert binary data into floating-point values.
     values = []
@@ -45,11 +54,15 @@ def main():
         # integer (little-endian).
         value = struct.unpack("<h", binary_data[i:i+2])[0]
         # Map the signed value to the range.
-        value = value / (4095.0 / 2)
+        value = value / ((NUM_VALUES-1) / 2.0)
         # Scale to [-1.0, 1.0].
         value = value - 1.0
         values.append(value)
 
+    return values
+
+
+def write_csv(output_file, values):
     # Write the values to a CSV file.
     with open(output_file, "w", encoding="utf-8", newline="") as csv_file:
         csv_writer = csv.writer(csv_file)

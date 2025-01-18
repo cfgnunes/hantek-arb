@@ -1,9 +1,14 @@
-# ARB to CSV Converter (for Hantek oscilloscopes)
+# Hantek ARB Toolkit
 
-This repository provides two Python scripts for working with **ARB files** used in **Hantek oscilloscopes** to define arbitrary waveform functions. The scripts allow users to:
+This project provides a set of Python scripts to work with ARB files used by Hantek oscilloscopes (DSO2000 series). It allows users to convert ARB files to CSV format, convert CSV files back to ARB, and generate PNG visualizations of waveforms from CSV data. The repository also includes sample ARB, CSV, and PNG files for testing and reference.
+
+![example](examples/sine.png)
+
+The scripts allow users to:
 
 1. Convert ARB files to CSV format (`arb2csv.py`).
 2. Convert CSV files back to ARB format (`csv2arb.py`).
+3. Convert CSV files to PNG images (`csv2png.py`).
 
 ## About ARB Files
 
@@ -22,6 +27,23 @@ This script converts an ARB file into a CSV file. The CSV file contains 4096 row
 ### `csv2arb.py`
 
 This script converts a CSV file back into an ARB file. The CSV must contain exactly 4096 rows with floating-point values in the range [-1.0, 1.0].
+
+### `csv2png.py`
+
+This script converts a CSV file into a PNG image, visualizing the waveform represented by the CSV data. The script generates a simple line plot of the waveform, with:
+
+- The x-axis representing the sample index (0 to 4095).
+- The y-axis representing the waveform value (scaled between -1.0 and 1.0).
+
+The output PNG file will have the same base name as the input CSV file.
+
+## Examples Directory
+
+The `examples` directory contains sample files for testing and reference, including:
+
+- **ARB files**: Predefined waveform files.
+- **CSV files**: Corresponding CSV representations of the waveforms.
+- **PNG files**: Visualizations of the waveforms in PNG format.
 
 ## Prerequisites
 
@@ -60,6 +82,22 @@ python3 csv2arb.py sine.csv
 ```
 
 This will generate a file named `sine.arb` in the same directory.
+
+### Converting CSV to PNG
+
+To convert a CSV file to a PNG image, use the following command:
+
+```bash
+python3 csv2png.py <file.csv>
+```
+
+For example:
+
+```bash
+python3 csv2png.py sine.csv
+```
+
+This will generate a file named `sine.png` in the same directory, visualizing the waveform.
 
 ## Notes
 

@@ -133,8 +133,3 @@ dmypy.json
 # Common IDEs
 .idea/
 .vscode/
-
-# Other files
-*.arb
-*.csv
-*.png

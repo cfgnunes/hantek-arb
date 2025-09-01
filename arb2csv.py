@@ -52,9 +52,9 @@ def read_arb(filename):
     for i in range(0, len(binary_data), 2):
         # Interpret each pair of bytes as a signed 16-bit
         # integer (little-endian).
-        value = struct.unpack("<h", binary_data[i:i+2])[0]
+        value = struct.unpack("<h", binary_data[i:i + 2])[0]
         # Map the signed value to the range.
-        value = value / ((NUM_VALUES-1) / 2.0)
+        value = value / ((NUM_VALUES - 1) / 2.0)
         # Scale to [-1.0, 1.0].
         value = value - 1.0
         values.append(value)
